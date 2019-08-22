@@ -1,0 +1,31 @@
+{
+  "name": "danmicrofe",
+  "version": "1.0.0",
+  "description": "for microfrontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "microfrontend",
+    "frontend",
+    "react",
+    "vue"
+  ],
+  "author": "Daniel",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router": "^5.0.1",
+    "single-spa": "^4.3.7",
+    "single-spa-react": "^2.10.2",
+    "single-spa-vue": "^1.5.4",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.2"
+  },
+  "devDependencies": {
+    "webpack": "^4.39.2",
+    "webpack-dev-server": "^3.8.0"
+  }
+}
