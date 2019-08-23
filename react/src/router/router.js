@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-08-23 15:46:58
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-23 18:10:56
+ * @LastEditTime: 2019-08-23 18:39:58
  */
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -54,6 +54,6 @@ const getNoAppRouter = () => (
 );
 
 module.exports = {
-  getRouter,
-  getNoAppRouter
+  getRouter
+  // getNoAppRouter
 };
