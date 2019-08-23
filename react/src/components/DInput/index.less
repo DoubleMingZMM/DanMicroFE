@@ -1,0 +1,236 @@
+@import '../../styles/variable.less';
+@import './mixin.less';
+
+.d-input {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  font-feature-settings: 'tnum', "tnum";
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 32px;
+  padding: 4px 11px;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  line-height: 32px;
+  background-color: @white-1;
+  background-image: none;
+  border: 1px solid @white-2;
+  border-radius: 4px;
+  transition: all 0.3s;
+
+  // DInput 鼠标 hover 的时候样式
+  &:hover {
+    border-color: @blue-2;
+    border-right-width: 1px !important;
+  }
+
+  // DInput 鼠标 focus 的时候样式
+  &:focus {
+    border-color: @blue-2;
+    border-right-width: 1px !important;
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  }
+
+  // DInput 的 size 设置为 default 的时候样式
+  &-size-lg {
+    height: 40px;
+    padding: 6px 11px;
+    font-size: 16px;
+    line-height: 40px;
+  }
+
+  // DInput 的 size 设置为 default 的时候样式
+  &-size-sm {
+    height: 24px;
+    padding: 1px 7px;
+    line-height: 24px;
+  }
+
+  // DInput 设置为 disabled 的时候样式
+  &-disabled {
+    color: rgba(0, 0, 0, 0.25);
+    background-color: @white-3;
+    cursor: not-allowed;
+    opacity: 1;
+
+    // DInput 设置为 disabled 的时候 鼠标 hover focus 样式
+    &:hover,&:focus {
+      border-color: @white-4;
+      border-right-width: 1px !important;
+    }
+  }
+
+  // 当有 prefix 或者 suffix 的时候 wraper 的样式
+  &-affix-wraper {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    font-feature-settings: 'tnum', "tnum";
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    // 当有 prefix suffix 时候的共同样式
+    & .d-input-prefix, & .d-input-suffix {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      color: rgba(0, 0, 0, 0.65);
+      line-height: 0;
+      transform: translateY(-50%);
+    }
+
+    // 当有 prefix 的时候独有的样式
+    & .d-input-prefix {
+      left: 12px;
+    }
+
+    // 当有 suffix 的时候独有的样式
+    & .d-input-suffix {
+      right: 12px;
+    }
+
+    // wraper 下面的 input 的右 padding
+    // (这个牛逼，一共三个元素,当最后一个元素是 d-input 时，不会使用该样式)
+    & .d-input:not(:last-child) {
+      padding-right: 30px;
+    }
+
+    // wraper 下面的 input 的左 padding
+    // (这个牛逼，一共三个元素,当第一个元素是 d-input 时，不会使用该样式)
+    & .d-input:not(:first-child) {
+      padding-left: 30px;
+    }
+  }
+
+  // 当有 addonBefore 或者 adonAfter 的时候 wraper 的样式
+  &-addon-wraper {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    font-feature-settings: 'tnum', "tnum";
+    position: relative;
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    // 设置 class 带有 d-input-addon- 属性的样式如此
+    & [class^=d-input-addon-] {
+      position: relative;
+      padding: 0 11px;
+      color: rgba(0, 0, 0, 0.65);
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 1;
+      text-align: center;
+      background-color: @white-5;
+      border: 1px solid @white-2;
+      border-radius: 4px;
+      transition: all 0.3s;
+      display: table-cell;
+      vertical-align: middle;
+      // 这个牛逼，设置外面元素包裹里面元素
+      width: 1px;
+    }
+
+    // 单独设置 .d-input-addon-before 的样式如此
+    & .d-input-addon-before {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: none;
+    }
+    
+    // 单独设置 .d-input-addon-after 的样式如此
+    & .d-input-addon-after {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: none;
+    }
+
+    // 这个相当牛逼，当下面有三个元素时，自己不是第一个元素时，下面的 d-input 应用这个样式
+    & .d-input-affix-wraper:not(:first-child) .d-input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    // 这个相当牛逼，当下面有三个元素时，自己不是最后一个元素时，下面的 d-input 应用这个样式
+    & .d-input-affix-wraper:not(:last-child) .d-input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    & .d-input:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    & .d-input:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    // 解决当有 d-input-addon-wraper 的时候，鼠标 focus 的时候 z-index 的值为1，
+    // 保证 box-shadow 不被后面的元素覆盖
+    & .d-input:focus {
+      z-index: 1;
+    }
+
+    // 设置 当有 d-input-search 这个属性的时候，不需要外面的 border
+    & .d-input-search + .d-input-addon-after {
+      border: 0;
+      padding: 0;
+    }
+  }
+}
+
+.border-left-radius {
+  border-top-left-radius: 0!important;
+  border-bottom-left-radius: 0!important;
+  white-space: nowrap;
+  border-left: 0!important;
+}
+
+.d-button[disabled],.border-left-radius {
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.mgl-5 {
+  margin-left: 5px;
+}
+
+textarea[class*=d-input] {
+  max-width: 100%;
+  height: auto;
+  min-height: 32px;
+  line-height: 1.5;
+  vertical-align: bottom;
+  transition: all 0.3s, height 0s;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.25);
+  transition: color 0.3s;
+}
+
+.cursor-pointer:hover {
+  color: rgba(0, 0, 0, 0.45);
+}

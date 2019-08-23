@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 1.0.0
+ * @Author: Daniel
+ * @Date: 2019-08-23 14:00:49
+ * @LastEditors: Daniel
+ * @LastEditTime: 2019-08-23 15:15:46
+ */
 import * as singleSpa from 'single-spa'; // waiting for this to be merged: https://github.com/CanopyTax/single-spa/pull/156
 
 export function hashPrefix(prefix) {
@@ -7,7 +15,8 @@ export function hashPrefix(prefix) {
 }
 
 export async function loadApp(name, hash, appURL, storeURL, globalEventDistributor) {
-    let storeModule = {}, customProps = {globalEventDistributor: globalEventDistributor};
+    let storeModule = {};
+    let customProps = {globalEventDistributor: globalEventDistributor};
 
     // try to import the store module
     try {

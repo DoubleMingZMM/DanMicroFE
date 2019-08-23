@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-08-23 11:52:34
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-23 14:08:18
+ * @LastEditTime: 2019-08-23 15:29:18
  */
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
