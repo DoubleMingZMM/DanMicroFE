@@ -4,6 +4,8 @@
   "description": "vue app",
   "main": "vue.app.js",
   "scripts": {
+    "watch:portal": "webpack-dev-server --port 9002",
+    "build:portal": "webpack -p --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,5 +15,21 @@
     "webpack"
   ],
   "author": "Daniel",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "single-spa-vue": "^1.5.4",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
+    "vue-loader": "^15.7.1",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
+  }
 }
