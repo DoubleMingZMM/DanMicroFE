@@ -4,7 +4,7 @@
  * @Author: Daniel
  * @Date: 2019-08-23 15:46:58
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-23 17:39:48
+ * @LastEditTime: 2019-08-23 18:10:56
  */
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -27,7 +27,7 @@ const getRouter = () => (
   /* A <Router> may have only one child element */
   <Switch>
     <Route component={createComponent(Dashboard)}
-      path="/dashboard"
+      path="/react/dashboard"
     />
     <Route component={createComponent(Page1)}
       path="/page1"
@@ -36,7 +36,7 @@ const getRouter = () => (
       path="/page2"
     />
     <Route path="*"
-      render={() => (<Redirect to="/dashboard" />)}
+      render={() => (<Redirect to="/react/dashboard" />)}
     />
   </Switch>
 );
@@ -45,10 +45,10 @@ const getNoAppRouter = () => (
   /* A <Router> may have only one child element */
   <Switch>
     <Route component={createComponent(Login)}
-      path="/login"
+      path="/react/login"
     />
     <Route path="*"
-      render={() => (<Redirect to="/login" />)}
+      render={() => (<Redirect to="/react/login" />)}
     />
   </Switch>
 );

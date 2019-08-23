@@ -4,10 +4,11 @@
  * @Author: Daniel
  * @Date: 2019-08-23 13:16:58
  * @LastEditors: Daniel
- * @LastEditTime: 2019-08-23 17:16:20
+ * @LastEditTime: 2019-08-23 18:06:14
  */
 const path = require('path');
 const HappyPack = require('happypack');
+const webpack = require('webpack');
 
 // 创建 happypack 共享进程池，其中包含 6 个子进程
 const happyThreadPool = HappyPack.ThreadPool({ size: 6 });
@@ -62,6 +63,10 @@ module.exports = {
     },
 
     plugins: [
+        // webpack 自带 HotModuleReplacementPlugin 插件，可以和 hot 结合配置热更
+        // 但是单独使用这个插件无效，效果类似于直接使用 DevServer 自带的刷新功能一致
+        // 也可以去掉这个插件的配置
+        new webpack.HotModuleReplacementPlugin(),
         // happypack 实现
         new HappyPack({
             /*
@@ -88,6 +93,10 @@ module.exports = {
             threadPool: happyThreadPool
         }),
     ],
+
+    devServer: {
+        hot: true
+    },
 
     /**
      * @description resolve 的配置信息
